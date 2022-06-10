@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Compile Code') {
             steps  {
-              //  sh 'mvn compile -s settings.xml  -Dcheckstyle.skip'
+                sh 'mvn compile -s settings.xml  -Dcheckstyle.skip'
               sh 'id'
             }
         }
