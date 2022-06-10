@@ -20,9 +20,10 @@ pipeline {
               
             }
         }
-        stage('Docker') {
+        stage('Building Docker Image') {
             steps {
                 sh 'docker images'
+                sh 'docker build -t petclinic:v1 .'
             }
         }
     }
