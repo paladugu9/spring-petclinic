@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Cloning Repo') {
+        stage('Cloning REpo') {
             steps {
                  git branch: 'main', url: 'https://github.com/paladugu9/spring-petclinic.git'
                 
@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Compile Code') {
             steps  {
-                sh 'mvn compile -s settings.xml  -Dcheckstyle.skip'
+              //  sh 'mvn compile -s settings.xml  -Dcheckstyle.skip'
               sh 'id'
             }
         }
@@ -20,11 +20,11 @@ pipeline {
               
             }
         }
-        stage('Building Docker Image') {
+        stage('Building Docker-Image And Running Image ') {
             steps {
                 sh 'docker images'
                 sh 'docker build -t petclinic:v1 .'
-                sh' docker images'
+                sh 'docker run -itd -p 8081:8081 petclinic:v1'
             }
         }
     }
