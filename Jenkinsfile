@@ -23,10 +23,11 @@ pipeline {
         stage('Building Docker-Image And Running Image ') {
             steps {
                 script {
-                    withCredentials([usernameColonPassword(credentialsId: 'paladugu', variable: 'paladugu')]) {
+                   withCredentials([usernamePassword(credentialsId: 'paladugu', passwordVariable: 'password', usernameVariable: 'username')])
+                    {
                 sh 'docker images'
                 sh 'docker build -t petclinic:v1 .'
-                sh 'docker login paladugu.jfrog.io' 
+                sh 'docker login paladugu.jfrog.io -u ${username} -p ${password}' 
                 sh 'docker tag petclinic:v1 paladugu.jfrog.io/paladugu/petclinic:v1'
                 sh 'docker push  paladugu.jfrog.io/paladugu/petclinic:v1'
 
