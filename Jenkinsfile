@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh 'docker images'
                 sh 'docker build -t petclinic:v1 .'
-                sh 'docker login paladugu.jfrog.io' -u 'paladugu1' -p 'Naag@Varun.9'
+                sh 'docker login paladugu.jfrog.io' -u 'paladugu1' -p 'NaagVarun.9'
                 sh 'docker tag petclinic:v1 paladugu.jfrog.io/paladugu/petclinic:v1'
                 sh 'docker push  paladugu.jfrog.io/paladugu/petclinic:v1'
 
