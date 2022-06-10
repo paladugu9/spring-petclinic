@@ -25,7 +25,7 @@ pipeline {
                 script {
                    withCredentials([usernamePassword(credentialsId: 'paladugu', passwordVariable: 'password', usernameVariable: 'username')])
                     {
-                sh 'sudo docker images'
+                sh 'docker images'
                 sh 'docker build -t petclinic:v1 .'
                 sh 'docker login paladugu.jfrog.io -u ${username} -p ${password}' 
                 sh 'docker tag petclinic:v1 paladugu.jfrog.io/paladugu/petclinic:v1'
